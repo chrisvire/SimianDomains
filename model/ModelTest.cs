@@ -57,5 +57,7 @@ class ModelTest
 				}
 			}
 		}
+
+        Console.ReadKey();
 	}
 };
