@@ -8,10 +8,10 @@ class ModelTest
 {
 	public struct Reference
 	{
-		public entry entry;
-		public sense sense;
+		public Entry entry;
+		public Sense sense;
 
-		public Reference(entry e, sense s)
+		public Reference(Entry e, Sense s)
 		{
 			entry = e;
 			sense = s;
@@ -23,31 +23,31 @@ class ModelTest
 		string filename = args[0];
 		string search = args[1];
 
-		XmlSerializer mySerializer = new XmlSerializer(typeof(database));
+		XmlSerializer mySerializer = new XmlSerializer(typeof(Database));
 		FileStream myFileStream = new FileStream(filename, FileMode.Open);
-		database o = (database)mySerializer.Deserialize(myFileStream);
+		Database o = (Database)mySerializer.Deserialize(myFileStream);
 
-		var entryIndex = new Dictionary<string, List<entry>>();
-		foreach (entry e in o.entry)
+		var entryIndex = new Dictionary<string, List<Entry>>();
+		foreach (Entry e in o.entry)
 		{
 			if (!entryIndex.ContainsKey(e.form))
-				entryIndex.Add(e.form, new List<entry>());
+				entryIndex.Add(e.form, new List<Entry>());
 			entryIndex[e.form].Add(e);
 		}
 
 		var refIndex = new Dictionary<string, Reference>();
-		foreach (entry e in o.entry)
+		foreach (Entry e in o.entry)
 		{
-			foreach (sense s in e.sense)
+			foreach (Sense s in e.sense)
 			{
 				refIndex.Add(s.id, new Reference(e, s));
 			}
 		}
 
-		List<entry> result = entryIndex[search];
-		foreach (entry e in result)
+		List<Entry> result = entryIndex[search];
+		foreach (Entry e in result)
 		{
-			foreach (sense s in e.sense)
+			foreach (Sense s in e.sense)
 			{
 				Console.WriteLine("{0} ({1}), {2}", e.form, s.gloss, s.category);
 				foreach (string syn in s.synonyms)

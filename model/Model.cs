@@ -19,14 +19,14 @@ namespace Schemas {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace="", IsNullable=false)]
-    public partial class database {
+    [System.Xml.Serialization.XmlRootAttribute("database", Namespace="", IsNullable=false)]
+    public partial class Database {
         
-        private entry[] entryField;
+        private Entry[] entryField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("entry")]
-        public entry[] entry {
+        public Entry[] entry {
             get {
                 return this.entryField;
             }
@@ -41,12 +41,12 @@ namespace Schemas {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace="", IsNullable=true)]
-    public partial class entry {
+    [System.Xml.Serialization.XmlRootAttribute("entry", Namespace="", IsNullable=true)]
+    public partial class Entry {
         
         private string formField;
         
-        private sense[] senseField;
+        private Sense[] senseField;
         
         /// <remarks/>
         public string form {
@@ -60,7 +60,7 @@ namespace Schemas {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("sense")]
-        public sense[] sense {
+        public Sense[] sense {
             get {
                 return this.senseField;
             }
@@ -75,8 +75,8 @@ namespace Schemas {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace="", IsNullable=true)]
-    public partial class sense {
+    [System.Xml.Serialization.XmlRootAttribute("sense", Namespace="", IsNullable=true)]
+    public partial class Sense {
         
         private string idField;
         
