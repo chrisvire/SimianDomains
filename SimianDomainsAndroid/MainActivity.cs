@@ -9,11 +9,9 @@ using Android.OS;
 
 namespace SimianDomainsAndroid
 {
-	[Activity (Label = "SimianDomainsAndroid", MainLauncher = true)]
+	[Activity (Label = "Simian Domains", MainLauncher = true)]
 	public class Activity1 : Activity
 	{
-		int count = 1;
-
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
@@ -23,10 +21,10 @@ namespace SimianDomainsAndroid
 
 			// Get our button from the layout resource,
 			// and attach an event to it
-			Button button = FindViewById<Button> (Resource.Id.myButton);
+			Button button = FindViewById<Button> (Resource.Id.buttonSubmit);
 			
 			button.Click += delegate {
-				button.Text = string.Format ("{0} clicks!", count++);
+				//TODO: per
 			};
 		}
 	}
