@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimianDomain", "SimianDomain.csproj", "{ECDA4428-267A-4E85-B60F-F506262008CA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimianDomain", "SimianDomain2010.csproj", "{ECDA4428-267A-4E85-B60F-F506262008CA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
