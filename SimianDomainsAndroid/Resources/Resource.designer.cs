@@ -73,6 +73,9 @@ namespace SimianDomainsAndroid
 			// aapt resource value: 0x7f060001
 			public const int editText1 = 2131099649;
 			
+			// aapt resource value: 0x7f060003
+			public const int textView1 = 2131099651;
+			
 			// aapt resource value: 0x7f060000
 			public const int textView3 = 2131099648;
 			
@@ -94,6 +97,9 @@ namespace SimianDomainsAndroid
 			
 			// aapt resource value: 0x7f030001
 			public const int monoandroidsplash = 2130903041;
+			
+			// aapt resource value: 0x7f030002
+			public const int SimpleDetail = 2130903042;
 			
 			static Layout()
 			{

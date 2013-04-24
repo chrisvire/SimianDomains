@@ -16,43 +16,26 @@ using SimianDomains.Core;
 namespace SimianDomainsAndroid
 {
 	[Activity (Label = "ResultActivity")]			
-	public class ResultActivity : ExpandableListActivity
+	public class ResultActivity : Activity
 	{
 		public List<EntryViewModel> Entries {
 			get;
 			set;
 		}
 
-
-
-		public override bool OnChildClick (ExpandableListView parent, View v, int groupPosition, int childPosition, long id)
-		{
-			return base.OnChildClick (parent, v, groupPosition, childPosition, id);
-		}
-
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
 
-			var lv = ExpandableListView;
-			lv.DividerHeight = 2;
-			lv.Clickable = true;
-			lv.SetGroupIndicator(null);
+			SetContentView (Resource.Layout.SimpleDetail);
 
-			SetGroupData();
-			SetChildGroupData();
+			TextView tv = FindViewById<TextView> (Resource.Id.textView1);
 
-			NewAdapter 
-		}
-
-		private void SetGroupData()
-		{
-
-		}
-
-		private void SetChildGroupData()
-		{
-
+			foreach (var e in Entries)
+			{
+				tv.Append(e.Form);
+			}
+			
 		}
 	}
 }
