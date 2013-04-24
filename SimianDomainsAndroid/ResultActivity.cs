@@ -25,6 +25,7 @@ namespace SimianDomainsAndroid
 		}
 
 		protected override void OnCreate (Bundle bundle)
+<<<<<<< HEAD
 		{
 			base.OnCreate (bundle);
 
@@ -41,6 +42,8 @@ namespace SimianDomainsAndroid
 		}
 
 		public static List<EntryViewModel> EntryFromIntent(Intent intent)
+=======
+>>>>>>> ExpandableListView
 		{
 			var reader = new StringReader(intent.GetStringExtra("entries"));
 
@@ -57,7 +60,19 @@ namespace SimianDomainsAndroid
 			serializer.Serialize(writer, entries);
 			intent.PutExtra("entries", writer.ToString());
 
+<<<<<<< HEAD
 			return intent;
+=======
+			SetContentView (Resource.Layout.SimpleDetail);
+
+			TextView tv = FindViewById<TextView> (Resource.Id.textView1);
+
+			foreach (var e in Entries)
+			{
+				tv.Append(e.Form);
+			}
+			
+>>>>>>> ExpandableListView
 		}
 
 	}
