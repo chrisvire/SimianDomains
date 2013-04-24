@@ -66,4 +66,9 @@
       <Name>SimianDomains.Core.Android</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="..\data\Akoose.xml">
+      <Link>Assets\Akoose.xml</Link>
+    </AndroidAsset>
+  </ItemGroup>
 </Project>

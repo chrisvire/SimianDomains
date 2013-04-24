@@ -14,8 +14,13 @@ namespace SimianDomainsAndroid
 	[Activity (Label = "Simian Domains", MainLauncher = true)]
 	public class Activity1 : Activity
 	{
+		private EntryManager entryManager;
+
 		protected override void OnCreate (Bundle bundle)
 		{
+			var stream = Assets.Open("Akoose.xml");
+			entryManager = new EntryManager(stream);
+
 			base.OnCreate (bundle);
 
 			// Set our view from the "main" layout resource
@@ -28,11 +33,9 @@ namespace SimianDomainsAndroid
 			button.Click += delegate {
 				EditText text = FindViewById<EditText> (Resource.Id.editText1);
 
-				var em = new EntryManager();
-				var entry = em.GetEntry(text.Text);
+				var entries = entryManager.GetEntries(text.Text);
 
-				var result = new ResultActivity();
-				result.Entry = entry;
+				var result = new ResultActivity { Entries = entries };
 
 				//TODO: StartActivity with ResultActivity and somehow pass entry to the Activity (maybe using an Intent?)
 
