@@ -1,9 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="SimianDomainsAndroid/MainActivity.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="SimianDomains.Core.Android/BL/EntryManager.cs">
     <Files>
-      <File FileName="SimianDomainsAndroid/Resources/values/Strings.xml" Line="1" Column="1" />
-      <File FileName="SimianDomainsAndroid/MainActivity.cs" Line="1" Column="1" />
+      <File FileName="SimianDomainsAndroid/MainActivity.cs" Line="29" Column="4" />
+      <File FileName="SimianDomainsAndroid/ResultActivity.cs" Line="30" Column="3" />
+      <File FileName="model/Model.cs" Line="14" Column="29" />
+      <File FileName="SimianDomains.Core.Android/BL/EntryManager.cs" Line="14" Column="29" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

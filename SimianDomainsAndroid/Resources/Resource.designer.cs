@@ -26,10 +26,10 @@ namespace SimianDomainsAndroid
 		
 		public static void UpdateIdValues()
 		{
-			SimianDomains.Core.Android.Resource.Drawable.monoandroidsplash = SimianDomainsAndroid.Resource.Drawable.monoandroidsplash;
-			SimianDomains.Core.Android.Resource.Layout.monoandroidsplash = SimianDomainsAndroid.Resource.Layout.monoandroidsplash;
-			SimianDomains.Core.Android.Resource.String.library_name = SimianDomainsAndroid.Resource.String.library_name;
-			SimianDomains.Core.Android.Resource.Style.Mono_Android_Theme_Splash = SimianDomainsAndroid.Resource.Style.Mono_Android_Theme_Splash;
+			SimianDomains.Core.Resource.Drawable.monoandroidsplash = SimianDomainsAndroid.Resource.Drawable.monoandroidsplash;
+			SimianDomains.Core.Resource.Layout.monoandroidsplash = SimianDomainsAndroid.Resource.Layout.monoandroidsplash;
+			SimianDomains.Core.Resource.String.library_name = SimianDomainsAndroid.Resource.String.library_name;
+			SimianDomains.Core.Resource.Style.Mono_Android_Theme_Splash = SimianDomainsAndroid.Resource.Style.Mono_Android_Theme_Splash;
 		}
 		
 		public partial class Attribute

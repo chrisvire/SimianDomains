@@ -7,6 +7,8 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 
+using SimianDomains.Core;
+
 namespace SimianDomainsAndroid
 {
 	[Activity (Label = "Simian Domains", MainLauncher = true)]
@@ -24,7 +26,16 @@ namespace SimianDomainsAndroid
 			Button button = FindViewById<Button> (Resource.Id.buttonSubmit);
 			
 			button.Click += delegate {
-				//TODO: per
+				EditText text = FindViewById<EditText> (Resource.Id.editText1);
+
+				var em = new EntryManager();
+				var entry = em.GetEntry(text.Text);
+
+				var result = new ResultActivity();
+				result.Entry = entry;
+
+				//TODO: StartActivity with ResultActivity and somehow pass entry to the Activity (maybe using an Intent?)
+
 			};
 		}
 	}

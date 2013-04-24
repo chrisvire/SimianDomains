@@ -8,7 +8,7 @@
     <ProjectGuid>{B5D082A3-596F-4513-BF30-F2EFF3853351}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
-    <RootNamespace>SimianDomains.Core.Android</RootNamespace>
+    <RootNamespace>SimianDomains.Core</RootNamespace>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
@@ -45,6 +45,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Resources\Resource.designer.cs" />
+    <Compile Include="..\model\Model.cs">
+      <Link>DL\Model.cs</Link>
+    </Compile>
+    <Compile Include="BL\EntryManager.cs" />
+    <Compile Include="BL\EntryViewModel.cs" />
+    <Compile Include="BL\SenseViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -53,4 +59,8 @@
     <AndroidResource Include="Resources\values\Strings.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="DL\" />
+    <Folder Include="BL\" />
+  </ItemGroup>
 </Project>
