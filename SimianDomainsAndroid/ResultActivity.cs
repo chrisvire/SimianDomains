@@ -12,31 +12,54 @@ using Android.Views;
 using Android.Widget;
 
 using SimianDomains.Core;
+using System.IO;
 
 namespace SimianDomainsAndroid
 {
 	[Activity (Label = "ResultActivity")]			
-	public class ResultActivity : ExpandableListActivity
+	public class ResultActivity : Activity
 	{
 		public List<EntryViewModel> Entries {
 			get;
 			set;
 		}
 
-		public override bool OnChildClick (ExpandableListView parent, View v, int groupPosition, int childPosition, long id)
-		{
-			return base.OnChildClick (parent, v, groupPosition, childPosition, id);
-		}
-
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
 
-			var lv = ExpandableListView;
-			lv.DividerHeight = 2;
-			lv.Clickable = true;
-			lv.SetGroupIndicator(null);
+			Entries = EntryFromIntent(Intent);
+
+			//SetContentView (Resource.Layout.SimpleDetail);
+
+			//TextView tv = FindViewById<TextView> (Resource.Id.textView1);
+
+			foreach (var e in Entries)
+			{
+				//tv.Append(e.Form);
+			}
 		}
+
+		public static List<EntryViewModel> EntryFromIntent(Intent intent)
+		{
+			var reader = new StringReader(intent.GetStringExtra("entries"));
+
+			var serializer = new System.Xml.Serialization.XmlSerializer(typeof(List<EntryViewModel>));
+			return (List<EntryViewModel>) serializer.Deserialize(reader);
+		}
+		
+		public static Intent IntentFromEntries(Context context, List<EntryViewModel> entries)
+		{
+			var intent = new Intent(context, typeof(ResultActivity));
+
+			var writer = new System.IO.StringWriter();
+			var serializer = new System.Xml.Serialization.XmlSerializer(typeof(List<EntryViewModel>));
+			serializer.Serialize(writer, entries);
+			intent.PutExtra("entries", writer.ToString());
+
+			return intent;
+		}
+
 	}
 }
 

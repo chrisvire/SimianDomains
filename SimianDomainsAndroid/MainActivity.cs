@@ -34,13 +34,14 @@ namespace SimianDomainsAndroid
 				EditText text = FindViewById<EditText> (Resource.Id.editText1);
 
 				var entries = entryManager.GetEntries(text.Text);
+				var intent = ResultActivity.IntentFromEntries(this, entries);
 
-				var result = new ResultActivity { Entries = entries };
-
-				//TODO: StartActivity with ResultActivity and somehow pass entry to the Activity (maybe using an Intent?)
-
+				StartActivity(intent);
 			};
 		}
+
+
+
 	}
 }
 
