@@ -28,7 +28,7 @@ namespace SimianDomainsAndroid
 
 			// Get our button from the layout resource,
 			// and attach an event to it
-			TextView tv = FindViewById<TextView> (Resource.Id.textView1);
+			Button button = FindViewById<Button> (Resource.Id.buttonSubmit);
 			
 			button.Click += delegate {
 				EditText text = FindViewById<EditText> (Resource.Id.editText1);

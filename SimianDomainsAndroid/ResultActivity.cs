@@ -25,27 +25,25 @@ namespace SimianDomainsAndroid
 		}
 
 		protected override void OnCreate (Bundle bundle)
-<<<<<<< HEAD
 		{
 			base.OnCreate (bundle);
 
 			Entries = EntryFromIntent(Intent);
 
-			//SetContentView (Resource.Layout.SimpleDetail);
+			SetContentView (Resource.Layout.SimpleDetail);
 
-			//TextView tv = FindViewById<TextView> (Resource.Id.textView1);
-
+			TextView tv = FindViewById<TextView> (Resource.Id.textView1);
+			
 			foreach (var e in Entries)
 			{
-				//tv.Append(e.Form);
+				tv.Append(e.Form);
 			}
 		}
 
 		public static List<EntryViewModel> EntryFromIntent(Intent intent)
-=======
->>>>>>> ExpandableListView
 		{
-			var reader = new StringReader(intent.GetStringExtra("entries"));
+			var extra = intent.GetStringExtra("entries");
+			var reader = new StringReader(extra);
 
 			var serializer = new System.Xml.Serialization.XmlSerializer(typeof(List<EntryViewModel>));
 			return (List<EntryViewModel>) serializer.Deserialize(reader);
@@ -60,21 +58,8 @@ namespace SimianDomainsAndroid
 			serializer.Serialize(writer, entries);
 			intent.PutExtra("entries", writer.ToString());
 
-<<<<<<< HEAD
 			return intent;
-=======
-			SetContentView (Resource.Layout.SimpleDetail);
-
-			TextView tv = FindViewById<TextView> (Resource.Id.textView1);
-
-			foreach (var e in Entries)
-			{
-				tv.Append(e.Form);
-			}
-			
->>>>>>> ExpandableListView
 		}
-
 	}
 }
 
