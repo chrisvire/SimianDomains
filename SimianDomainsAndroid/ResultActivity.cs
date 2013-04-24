@@ -23,6 +23,8 @@ namespace SimianDomainsAndroid
 			set;
 		}
 
+
+
 		public override bool OnChildClick (ExpandableListView parent, View v, int groupPosition, int childPosition, long id)
 		{
 			return base.OnChildClick (parent, v, groupPosition, childPosition, id);
@@ -36,6 +38,21 @@ namespace SimianDomainsAndroid
 			lv.DividerHeight = 2;
 			lv.Clickable = true;
 			lv.SetGroupIndicator(null);
+
+			SetGroupData();
+			SetChildGroupData();
+
+			NewAdapter 
+		}
+
+		private void SetGroupData()
+		{
+
+		}
+
+		private void SetChildGroupData()
+		{
+
 		}
 	}
 }
