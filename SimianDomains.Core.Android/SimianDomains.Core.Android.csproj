@@ -48,9 +48,11 @@
     <Compile Include="..\model\Model.cs">
       <Link>DL\Model.cs</Link>
     </Compile>
-    <Compile Include="BL\EntryManager.cs" />
     <Compile Include="BL\EntryViewModel.cs" />
     <Compile Include="BL\SenseViewModel.cs" />
+    <Compile Include="BL\IEntryRepository.cs" />
+    <Compile Include="BL\XmlEntryRepository.cs" />
+    <Compile Include="BL\BaseEntryRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

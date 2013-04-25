@@ -19,7 +19,7 @@ namespace SimianDomainsAndroid
 	[Activity (Label = "ResultActivity")]			
 	public class ResultActivity : Activity
 	{
-		public List<EntryViewModel> Entries {
+		public IEnumerable<EntryViewModel> Entries {
 			get;
 			set;
 		}
@@ -28,35 +28,32 @@ namespace SimianDomainsAndroid
 		{
 			base.OnCreate (bundle);
 
-			Entries = EntryFromIntent(Intent);
+			var form = FormFromIntent(Intent);
 
-			SetContentView (Resource.Layout.SimpleDetail);
+			var app = (SimianDomainsAndroid.Application) Application;
+			Entries = app.SharedEntryRepository.FindByForm(form);
+
+			SetContentView (Resource.Layout.Result);
 
 			TextView tv = FindViewById<TextView> (Resource.Id.textView1);
 			
 			foreach (var e in Entries)
 			{
-				tv.Append(e.Form);
+				tv.Append(e.Form + System.Environment.NewLine);
 			}
 		}
-
-		public static List<EntryViewModel> EntryFromIntent(Intent intent)
+		 
+		public static string FormFromIntent(Intent intent)
 		{
-			var extra = intent.GetStringExtra("entries");
-			var reader = new StringReader(extra);
+			return intent.GetStringExtra("form");
 
-			var serializer = new System.Xml.Serialization.XmlSerializer(typeof(List<EntryViewModel>));
-			return (List<EntryViewModel>) serializer.Deserialize(reader);
 		}
 		
-		public static Intent IntentFromEntries(Context context, List<EntryViewModel> entries)
+		public static Intent IntentFromForm(Context context, string form)
 		{
 			var intent = new Intent(context, typeof(ResultActivity));
 
-			var writer = new System.IO.StringWriter();
-			var serializer = new System.Xml.Serialization.XmlSerializer(typeof(List<EntryViewModel>));
-			serializer.Serialize(writer, entries);
-			intent.PutExtra("entries", writer.ToString());
+			intent.PutExtra("form", form);
 
 			return intent;
 		}

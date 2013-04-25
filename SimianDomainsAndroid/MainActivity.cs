@@ -14,13 +14,8 @@ namespace SimianDomainsAndroid
 	[Activity (Label = "Simian Domains", MainLauncher = true)]
 	public class Activity1 : Activity
 	{
-		private EntryManager entryManager;
-
 		protected override void OnCreate (Bundle bundle)
 		{
-			var stream = Assets.Open("Akoose.xml");
-			entryManager = new EntryManager(stream);
-
 			base.OnCreate (bundle);
 
 			// Set our view from the "main" layout resource
@@ -33,8 +28,9 @@ namespace SimianDomainsAndroid
 			button.Click += delegate {
 				EditText text = FindViewById<EditText> (Resource.Id.editText1);
 
-				var entries = entryManager.GetEntries(text.Text);
-				var intent = ResultActivity.IntentFromEntries(this, entries);
+				var form = text.Text;
+
+				var intent = ResultActivity.IntentFromForm(this, form);
 
 				StartActivity(intent);
 			};
