@@ -9,7 +9,7 @@ namespace SimianDomains.Core
 	public interface IEntryRepository
 	{
 		IEnumerable<EntryViewModel> FindByForm(string form);
-		IEnumerable<string> FindFormsLike(string form);
+		string[] AllForms();
 	}
 }
 

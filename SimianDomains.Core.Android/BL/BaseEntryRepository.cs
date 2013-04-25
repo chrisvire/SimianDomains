@@ -65,13 +65,9 @@ namespace SimianDomains.Core
 			return entries;
 		}
 
-		public IEnumerable<string> FindFormsLike(string form)
+		public string[] AllForms()
 		{
-			var query = from e in entryIndex
-					where e.Key.Contains(form)
-					select e.Key;
-
-			return query;
+			return entryIndex.Keys.Distinct().ToArray();
 		}
 	}
 }
