@@ -64,7 +64,10 @@ namespace SimianDomains.Core
 			var entries = new List<EntryViewModel>();
 			try
 			{
-				var result = entryIndex[form];
+				List<Entry> result;
+				if (!entryIndex.TryGetValue(form, out result))
+					return entries;
+
 				foreach (Entry e in result)
 				{
 					var entryModel = new EntryViewModel { Form = e.form };
