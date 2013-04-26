@@ -16,20 +16,20 @@ namespace SimianDomains.Core
 			var mySerializer = new XmlSerializer(typeof(Database));
 			var db = (Database)mySerializer.Deserialize(xmlStream);
 			
-			entryIndex = new Dictionary<string, List<Entry>>();
+			EntryIndex = new Dictionary<string, List<Entry>>();
 			foreach (Entry e in db.entry)
 			{
-				if (!entryIndex.ContainsKey(e.form))
-					entryIndex.Add(e.form, new List<Entry>());
-				entryIndex[e.form].Add(e);
+				if (!EntryIndex.ContainsKey(e.form))
+					EntryIndex.Add(e.form, new List<Entry>());
+				EntryIndex[e.form].Add(e);
 			}
 			
-			refIndex = new Dictionary<string, Reference>();
+			RefIndex = new Dictionary<string, Reference>();
 			foreach (Entry e in db.entry)
 			{
 				foreach (Sense s in e.sense)
 				{
-					refIndex.Add(s.id, new Reference(e, s));
+					RefIndex.Add(s.id, new Reference(e, s));
 				}
 			}
 		}

@@ -24,8 +24,8 @@ namespace SimianDomains.Core
 			}
 		};
 
-		protected Dictionary<string, List<Entry>> entryIndex { get;  set; }
-		protected Dictionary<string, Reference> refIndex { get; set; }
+		protected Dictionary<string, List<Entry>> EntryIndex { get;  set; }
+		protected Dictionary<string, Reference> RefIndex { get; set; }
 
 		public IEnumerable<EntryViewModel> FindByForm(string form)
 		{
@@ -34,7 +34,7 @@ namespace SimianDomains.Core
 			try
 			{
 				List<Entry> result;
-				if (!entryIndex.TryGetValue(form, out result))
+				if (!EntryIndex.TryGetValue(form, out result))
 					return entries;
 
 				foreach (Entry e in result)
@@ -47,7 +47,7 @@ namespace SimianDomains.Core
 						foreach (string syn in s.synonyms)
 						{
 							Reference r;
-							if (refIndex.TryGetValue(syn, out r))
+							if (RefIndex.TryGetValue(syn, out r))
 							{
 								senseModel.Synonyms.Add(r.entry.form);
 							}
@@ -65,9 +65,9 @@ namespace SimianDomains.Core
 			return entries;
 		}
 
-		public string[] AllForms()
+		public string[] AllForms
 		{
-			return entryIndex.Keys.Distinct().ToArray();
+            get { return EntryIndex.Keys.ToArray(); }
 		}
 	}
 }
