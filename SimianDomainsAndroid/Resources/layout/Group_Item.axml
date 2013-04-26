@@ -10,8 +10,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/group_item"
         android:text="Text"
-        android:paddingLeft="50px" 
-        android:paddingTop="6px"
-        android:paddingBottom="6px"
+        android:paddingLeft="50dip" 
+        android:paddingTop="6dip"
+        android:paddingBottom="6dip"
         android:textSize="20sp"/>
 </LinearLayout>

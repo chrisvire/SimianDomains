@@ -5,4 +5,4 @@
     p1:layout_height="wrap_content"
     p1:id="@+id/sub_item"
     p1:textSize="20sp"
-    p1:paddingLeft="50px" />
+    p1:paddingLeft="50dip" />
