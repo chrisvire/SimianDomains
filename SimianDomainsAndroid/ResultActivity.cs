@@ -84,9 +84,17 @@ namespace SimianDomainsAndroid
 		{
 			//return base.OnChildClick (parent, v, groupPosition, childPosition, id);
 			JavaDictionary<string, object> child = (JavaDictionary<string, object>) ExpandableListAdapter.GetChild(groupPosition, childPosition);
-			string synonym = (string) child[synonymKey];
-			PopulateData(synonym);
-			return true;
+			if (child != null)
+			{
+				string synonym = (string) child[synonymKey];
+				if (synonym != null)
+				{
+					PopulateData(synonym);
+					return true;
+				}
+			}
+
+			return false;
 		}
 		 
 		public static string FormFromIntent(Intent intent)
