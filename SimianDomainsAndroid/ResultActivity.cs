@@ -65,6 +65,12 @@ namespace SimianDomainsAndroid
                         new[] { Resource.Id.sub_item }   // Data under the keys above go into these TextViews.
                     );
             SetListAdapter(expListAdapter);             // setting the adapter in the list.
+
+			int count = ExpandableListAdapter.GroupCount;
+			for (int position = 0; position < count; position++)
+			{
+				ExpandableListView.ExpandGroup(position);
+			}
 		}
 		 
 		public static string FormFromIntent(Intent intent)
