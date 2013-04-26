@@ -20,7 +20,7 @@ namespace SimianDomainsAndroid
 	public class ResultActivity : ExpandableListActivity
 	{
         private const string formKey = "Form";
-        private const string senseKey = "Sense";
+        private const string synonymKey = "Synonym";
 
 		protected override void OnCreate(Bundle bundle)
 		{
@@ -32,21 +32,24 @@ namespace SimianDomainsAndroid
             Application app = (Application)Application;
             
             IList<IDictionary<string, object>> forms = new JavaList<IDictionary<string, object>>();
-            IList<IList<IDictionary<string, object>>> senses = new JavaList<IList<IDictionary<string, object>>>();
+            IList<IList<IDictionary<string, object>>> synonyms = new JavaList<IList<IDictionary<string, object>>>();
 		    foreach (EntryViewModel entry in app.SharedEntryRepository.FindByForm(form))
 		    {
-                JavaDictionary<string, object> formInformation = new JavaDictionary<string, object>();
-                formInformation[formKey] = entry.Form;
-                forms.Add(formInformation);
-
-                JavaList<IDictionary<string, object>> senseInformation = new JavaList<IDictionary<string, object>>();
+                JavaList<IDictionary<string, object>> synonymInformation = new JavaList<IDictionary<string, object>>();
 		        foreach (SenseViewModel sense in entry.Senses)
 		        {
-                    JavaDictionary<string, object> senseHolder = new JavaDictionary<string, object>();
-                    senseHolder[senseKey] = sense.Gloss;
-                    senseInformation.Add(senseHolder);
-                }
-				senses.Add(senseInformation);
+					JavaDictionary<string, object> formInformation = new JavaDictionary<string, object>();
+					formInformation[formKey] = String.Format("{0} - {1}, /{2}/", entry.Form, sense.Category, sense.Gloss);
+					forms.Add(formInformation);
+
+					JavaDictionary<string, object> synonymHolder = new JavaDictionary<string, object>();
+					foreach (string synonym in sense.Synonyms)
+					{
+						synonymHolder[synonymKey] = synonym;
+						synonymInformation.Add(synonymHolder);
+					}
+					synonyms.Add(synonymInformation);
+				}
 		    }
 
             SimpleExpandableListAdapter expListAdapter =
@@ -56,9 +59,9 @@ namespace SimianDomainsAndroid
                         Resource.Layout.Group_Item,     // Group item layout XML.
                         new[] { formKey },              // the key of group item.
                         new[] { Resource.Id.group_item },// ID of each group item.-Data under the key goes into this TextView.
-                        senses,                         // childData describes second-level entries.
+                        synonyms,                         // childData describes second-level entries.
                         Resource.Layout.Sub_Item,       // Layout for sub-level entries(second level).
-                        new[] { senseKey },             // Keys in childData maps to display.
+                        new[] { synonymKey },             // Keys in childData maps to display.
                         new[] { Resource.Id.sub_item }   // Data under the keys above go into these TextViews.
                     );
             SetListAdapter(expListAdapter);             // setting the adapter in the list.
